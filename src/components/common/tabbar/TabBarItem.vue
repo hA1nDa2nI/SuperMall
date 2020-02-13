@@ -14,7 +14,7 @@ export default {
     path: String,
     activeColor: {  // 接收数据
       type: String,
-      defalut: '#f6f6f6'
+      default: 'var(--color-high-text)'
     }
   },
   data() {
