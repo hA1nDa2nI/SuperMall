@@ -181,20 +181,9 @@
     width: 100%;
     background-color: var(--color-tint);
     color: #fff;
-    /* position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9; */
   }
 
-  /* .tab-control {
-    position: sticky;
-    top: 44px;
-    z-index: 9;
-  } */
-
   .content {
-    /* height: 300px; */
     overflow: hidden;
     position: absolute;
     top: 44px;

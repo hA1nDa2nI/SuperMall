@@ -28,13 +28,14 @@
     },
     data() {
       return {
-        currentIndex: ''
+        currentIndex: 0
       }
     },
     methods: {
       itemClick(index) {
         this.currentIndex = index
         this.$emit('selectItem', index)
+        console.log(index)
       }
     }
   }

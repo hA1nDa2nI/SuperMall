@@ -2,10 +2,13 @@
   <div id="category">
     <nav-bar class="category-nav"><div slot="center">商品分类</div></nav-bar>
     <div class="content">
-      <tab-menu :categories="categories"/>
+      <tab-menu :categories="categories" @selectItem="selectItem"/>
       <scroll id="tab-content">
         <div>
           <tab-content-category :subcategories="showSubcategory"/>
+          <tab-control :titles="['综合', '新品', '销量']"
+                       @tabClick="tabClick"/>
+          <tab-content-detail :category-detail="showCategoryDetail"/>
         </div>
       </scroll>
     </div>
@@ -15,37 +18,53 @@
 <script>
   import NavBar from 'components/common/navbar/NavBar'
   import Scroll from 'components/common/scroll/Scroll'
+  import TabControl from 'components/content/tabControl/TabControl'
 
   import TabMenu from './childComps/TabMenu'
   import TabContentCategory from './childComps/TabContentCategory'
+  import TabContentDetail from './childComps/TabContentDetail'
 
   import {getCategory, getSubcategory, getCategoryDetail} from 'network/category'
+  import {POP, SELL, NEW} from "common/const"
+  import {tabControlMixin} from "common/mixin"
 
   export default {
     name: 'Category',
     components: {
       NavBar,
       Scroll,
+      TabControl,
 
       TabMenu,
-      TabContentCategory
+      TabContentCategory,
+      TabContentDetail
+    },
+    mixins: [tabControlMixin],
+    data() {
+      return {
+        categories: [],
+        categoryData: {},
+        currentIndex: -1
+      }
     },
     computed: {
 		  showSubcategory() {
 		    if (this.currentIndex === -1) return {}
         return this.categoryData[this.currentIndex].subcategories
       },
-    },
-    data() {
-      return {
-        categories: [],
-        categoryData: {}
+      showCategoryDetail() {
+		    if (this.currentIndex === -1) return []
+        return this.categoryData[this.currentIndex].categoryDetail[this.currentType]
       }
     },
     created() {
       this.getCategory()
     },
     methods: {
+      // 事件响应相关的方法
+      selectItem(index) {
+        this.getSubcategories(index)
+      },
 
       // 网络请求
       getCategory() {
@@ -66,13 +85,12 @@
               }
             }
           }
-          // console.log(this.categoryData)
 
           // 3.请求第一个分类的数据
-          this.getSubcategory(0)
+          this.getSubcategories(0)
         })
       },
-      getSubcategory(index) {
+      getSubcategories(index) {
         this.currentIndex = index;
 		    const mailKey = this.categories[index].maitKey;
         getSubcategory(mailKey).then(res => {
@@ -116,11 +134,7 @@
   }
 
   .content {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 44px;
-    bottom: 49px;
+    height: calc(100% - 44px - 49px);
     display: flex;
   }
 

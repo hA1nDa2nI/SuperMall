@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?fmy5ej');
-  src:  url('../fonts/icomoon.eot?fmy5ej#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?fmy5ej') format('truetype'),
-    url('../fonts/icomoon.woff?fmy5ej') format('woff'),
-    url('../fonts/icomoon.svg?fmy5ej#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?8vn6tj');
+  src:  url('../fonts/icomoon.eot?8vn6tj#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?8vn6tj') format('truetype'),
+    url('../fonts/icomoon.woff?8vn6tj') format('woff'),
+    url('../fonts/icomoon.svg?8vn6tj#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,14 +25,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-home:before {
-  content: "\e900";
-}
 .icon-file-text2:before {
   content: "\e926";
 }
 .icon-cart:before {
   content: "\e93a";
+}
+.icon-credit-card:before {
+  content: "\e93f";
 }
 .icon-mobile:before {
   content: "\e958";
@@ -46,8 +46,8 @@
 .icon-gift:before {
   content: "\e99f";
 }
-.icon-list2:before {
-  content: "\e9bb";
+.icon-download2:before {
+  content: "\e9c5";
 }
 .icon-eye:before {
   content: "\e9ce";
@@ -60,7 +60,4 @@
 }
 .icon-ctrl:before {
   content: "\ea50";
-}
-.icon-table2:before {
-  content: "\ea71";
 }
