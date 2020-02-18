@@ -1,6 +1,6 @@
 <template>
-  <div id="user-info">
-    <a href="#" class="clear-fix">
+  <div id="user-info" @click="loginClick">
+    <a class="clear-fix">
       <div class="user-icon">
         <slot name="user-icon">
           <img src="~assets/img/profile/no_login.jpg" alt="" width="100%">
@@ -22,7 +22,12 @@
 
 <script>
   export default {
-    name: 'UserInfo'
+    name: 'UserInfo',
+    methods: {
+      loginClick() {
+        this.$router.push('/login')
+      }
+    }
   }
 </script>
 
